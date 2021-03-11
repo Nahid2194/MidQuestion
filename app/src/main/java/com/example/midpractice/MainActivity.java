@@ -12,9 +12,9 @@ import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
     public static String markExtraData = "com.example.midpractice";
-    public static String name = "";
+    public static String name = "",phone="",id="";
     TextView myTextView,countText;
-    public EditText myName,studentId;
+    public EditText myName,studentId,PhoneNumber;
     int count=0;
 
     @Override
@@ -25,6 +25,7 @@ public class MainActivity extends AppCompatActivity {
         studentId = findViewById(R.id.studentId);
         countText = findViewById(R.id.countShow);
         myName = findViewById(R.id.name);
+        PhoneNumber = findViewById(R.id.phoneId);
     }
 
     public void CountFunction(View view) {
@@ -37,13 +38,17 @@ public class MainActivity extends AppCompatActivity {
         String nameValue = myName.getText().toString();
         String textCount = countText.getText().toString();
         String studentID = studentId.getText().toString();
+        String phoneNo = PhoneNumber.getText().toString();
         Intent myIntent = new Intent(MainActivity.this,NextActivity.class);
-        Bundle extras = new Bundle();
-        extras.putString("count",textCount);
-        extras.putString("name",nameValue);
-        extras.putString("ID",studentID);
-         //myIntent.putExtra(markExtraData,count);
-         myIntent.putExtras(extras);
+//        Bundle extras = new Bundle();
+//        extras.putString("count",textCount);
+//        extras.putString("name",nameValue);
+//        extras.putString("ID",studentID);
+//        extras.putString("Phone",phoneNo);
+        myIntent.putExtra(name,nameValue);
+         myIntent.putExtra(phone,phoneNo);
+        myIntent.putExtra(id,studentID);
+        // myIntent.putExtras(extras);
         startActivity(myIntent);
     }
 }
